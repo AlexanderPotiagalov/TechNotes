@@ -1,9 +1,13 @@
 const express = require("express"); // import express module
 const app = express(); // create an instance of express
 const path = require("path"); // import path module to handle file paths
+const { logEvents, logger } = require("./middleware/logger.js"); // import the logging middleware
 const PORT = process.env.PORT || 3000; // set the port to listen on, defaulting to 3000 if not specified in environment variables
 
-app.use("/", express.static(path.join(__dirname, "/public"))); // tells express where to find static files like css and img files
+app.use(logger); // use the logger middleware to log requests
+app.use(express.json()); // middleware to parse JSON bodies of incoming requests
+
+app.use("/", express.static(path.join(__dirname, "/public"))); // middleware that tells express where to find static files like css and img files
 app.use("/", require("./routes/root.js")); // use the routes defined in the routes module
 app.all("*", (req, res) => {
   // catch-all route for any other requests
