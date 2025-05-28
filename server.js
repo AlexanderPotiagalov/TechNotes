@@ -2,6 +2,7 @@ const express = require("express"); // import express module
 const app = express(); // create an instance of express
 const path = require("path"); // import path module to handle file paths
 const { logEvents, logger } = require("./middleware/logger.js"); // import the logging middleware
+const errorHandler = require("./middleware/errorHandler.js"); // import the error handling middleware
 const PORT = process.env.PORT || 3000; // set the port to listen on, defaulting to 3000 if not specified in environment variables
 
 app.use(logger); // use the logger middleware to log requests
@@ -23,4 +24,5 @@ app.all("*", (req, res) => {
     res.type("txt").send("404 Not Found"); // send a plain text response indicating the resource was not found
   }
 });
+app.use(errorHandler); // use the error handling middleware to catch and handle errors
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`)); // start the server and log the port it's running on
