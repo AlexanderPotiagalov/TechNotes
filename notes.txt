@@ -1,0 +1,5 @@
+Full stack: Code running on server + Code running on browser (client side)
+            Backend + Frontend
+
+Backend: Uses REST API (interface that 2 computer systems use to exchange info securely over the internet)
+         - HTTP Requests can come in the form of CRUD (Create, Read, Update & Delete) or (Post, Get, Put & Delete)
