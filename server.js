@@ -1,3 +1,4 @@
+require("dotenv").config(); // load environment variables from .env file
 const express = require("express"); // import express module
 const app = express(); // create an instance of express
 const path = require("path"); // import path module to handle file paths
@@ -7,6 +8,8 @@ const cookieParser = require("cookie-parser"); // import cookie-parser middlewar
 const cors = require("cors"); // import cors middleware to handle Cross-Origin Resource Sharing
 const corsOptions = require("./config/corsOptions.js"); // import CORS options from the configuration module
 const PORT = process.env.PORT || 3000; // set the port to listen on, defaulting to 3000 if not specified in environment variables
+
+console.log(process.env.NODE_ENV); // log the current environment (development, production, etc.)
 
 app.use(logger); // use the logger middleware to log requests
 app.use(cors(corsOptions)); // use CORS middleware to allow cross-origin requests
