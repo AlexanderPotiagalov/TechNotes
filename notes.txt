@@ -3,3 +3,12 @@ Full stack: Code running on server + Code running on browser (client side)
 
 Backend: Uses REST API (interface that 2 computer systems use to exchange info securely over the internet)
          - HTTP Requests can come in the form of CRUD (Create, Read, Update & Delete) or (Post, Get, Put & Delete)
+
+Middleware: Functions placed in the path of HTTP requests that are received by backend REST APIs
+            - Additional Functionality for the API
+            - Preliminary Request Processing
+            - Types in this project: 
+                #1: Built-in
+                #2: Custom
+                #3: 3rd Party 
+
