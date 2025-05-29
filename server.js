@@ -7,10 +7,13 @@ const errorHandler = require("./middleware/errorHandler.js"); // import the erro
 const cookieParser = require("cookie-parser"); // import cookie-parser middleware to handle cookies
 const cors = require("cors"); // import cors middleware to handle Cross-Origin Resource Sharing
 const corsOptions = require("./config/corsOptions.js"); // import CORS options from the configuration module
+const connectDB = require("./config/dbConn.js"); // import the database connection module
+const mongoose = require("mongoose"); // import mongoose for MongoDB interactions
 const PORT = process.env.PORT || 3000; // set the port to listen on, defaulting to 3000 if not specified in environment variables
 
 console.log(process.env.NODE_ENV); // log the current environment (development, production, etc.)
 
+connectDB(); // connect to the MongoDB database
 app.use(logger); // use the logger middleware to log requests
 app.use(cors(corsOptions)); // use CORS middleware to allow cross-origin requests
 app.use(express.json()); // middleware to parse JSON bodies of incoming requests
@@ -32,4 +35,16 @@ app.all("*", (req, res) => {
   }
 });
 app.use(errorHandler); // use the error handling middleware to catch and handle errors
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`)); // start the server and log the port it's running on
+
+mongoose.connection.once("open", () => {
+  console.log("Connected to MongoDB"); // log a message when the connection to MongoDB is established
+  app.listen(PORT, () => console.log(`Server is running on port ${PORT}`)); // start the server and log the port it's running on
+});
+
+mongoose.connection.on("error", (err) => {
+  console.error(err); // log any errors that occur with the MongoDB connection
+  logEvents(
+    `${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`,
+    "mongoErrLog.log"
+  ); // log the error to a file
+});
