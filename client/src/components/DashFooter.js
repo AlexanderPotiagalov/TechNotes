@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon
 import { faHouse } from "@fortawesome/free-solid-svg-icons"; // Import specific icon
 import { useNavigate, useLocation } from "react-router-dom"; // Import hooks for navigation and location
-import { GoHome } from "react-icons/go";
 
 const DashFooter = () => {
   // DashFooter component
