@@ -1,7 +1,10 @@
 import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice";
 
-const notesAdapter = createEntityAdapter({}); // Create an entity adapter for notes
+const notesAdapter = createEntityAdapter({
+  sortComparer: (a, b) =>
+    a.completed === b.completed ? 0 : a.completed ? 1 : -1, // Sort notes by completion status
+}); // Create an entity adapter for notes
 const initialState = notesAdapter.getInitialState(); // Get the initial state for notes
 
 export const notesApiSlice = apiSlice.injectEndpoints({
