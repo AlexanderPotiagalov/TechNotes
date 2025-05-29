@@ -30,10 +30,47 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: "User", id: "LIST" }]; // Fallback tag if no users are found
       },
     }),
+    // Mutation to add a new user
+    addNewUser: builder.mutation({
+      query: (initialUserData) => ({
+        url: "/users",
+        method: "POST",
+        body: {
+          ...initialUserData, // Spread the initial user data to include all fields
+        },
+      }),
+      invalidatesTags: [{ type: "User", id: "LIST" }],
+    }),
+    // Mutation to update an existing user
+    updateUser: builder.mutation({
+      query: (initialUserData) => ({
+        url: "/users",
+        method: "PATCH",
+        body: {
+          ...initialUserData, // Spread the initial user data to include all fields
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
+    // Mutation to delete a user
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: `/users`,
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
   }),
 });
 
-export const { useGetUsersQuery } = usersApiSlice; // Export the hook to use the getUsers query
+export const {
+  useGetUsersQuery,
+  useAddNewUserMutation,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
+} = usersApiSlice; // Export the hook to use the getUsers query
+
 export const selectUsersResult = usersApiSlice.endpoints.getUsers.select(); // Select the result of the getUsers query
 // create memoized selector to get the users result
 export const selectUsersData = createSelector(
