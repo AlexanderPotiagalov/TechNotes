@@ -2,6 +2,7 @@ import { useGetUsersQuery } from "./UsersApiSlice";
 import User from "./User";
 
 const UsersList = () => {
+  // Fetching users list
   const {
     data: users,
     isLoading,
@@ -10,6 +11,10 @@ const UsersList = () => {
     error,
   } = useGetUsersQuery();
 
+  // Conditional rendering based on the query state
+  // isLoading: true when the request is in progress
+  // isSuccess: true when the request is successful and data is available
+  // isError: true when the request fails
   let content;
   if (isLoading) content = <p>Loading...</p>;
   if (isError)
@@ -23,6 +28,7 @@ const UsersList = () => {
       ? ids.map((userId) => <User key={userId} userId={userId} />)
       : null;
 
+    // Render the table with user data
     content = (
       <table className="table table--users">
         <thead className="table__thead">
