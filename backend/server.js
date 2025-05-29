@@ -21,6 +21,7 @@ app.use(cookieParser()); // middleware to parse cookies from incoming requests
 app.use("/", express.static(path.join(__dirname, "/public"))); // middleware that tells express where to find static files like css and img files
 app.use("/", require("./routes/root.js")); // use the routes defined in the routes module
 app.use("/users", require("./routes/userRoutes.js")); // use the user routes defined in the userRoutes module
+app.use("/notes", require("./routes/noteRoutes"));
 app.all("*", (req, res) => {
   // catch-all route for any other requests
   res.status(404);
