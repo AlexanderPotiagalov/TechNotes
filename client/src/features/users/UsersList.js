@@ -42,7 +42,6 @@ const UsersList = () => {
             <th scope="col" className="table_th edit">
               Edit
             </th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>{tableContent}</tbody>
