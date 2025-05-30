@@ -9,7 +9,7 @@ const UsersList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery(undefined, {
+  } = useGetUsersQuery("usersList", {
     pollingInterval: 60000, // Polling every 60 seconds
     refetchOnFocus: true, // Refetch when the component gains focus
     refetchOnMountOrArgChange: true, // Refetch when the component mounts or arguments change
