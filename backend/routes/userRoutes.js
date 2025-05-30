@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const usersController = require("../controllers/usersController"); // Import the users controller
+const verifyJWT = require("../middleware/verifyJWT");
+
+router.use(verifyJWT);
 
 router // Create a new router instance for user-related routes
   .route("/")
