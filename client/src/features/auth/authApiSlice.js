@@ -1,5 +1,5 @@
 import { apiSlice } from "../../app/api/apiSlice";
-import { logOut } from "./authSlice";
+import { logOut, setCredentials } from "./authSlice";
 
 // Extend the base API slice with authentication-related endpoints
 export const authApiSlice = apiSlice.injectEndpoints({
@@ -20,11 +20,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
-          // const { data } =
-          await queryFulfilled; // Wait for the logout request to complete
-          // console.log(data);
+          const { data } = await queryFulfilled; // Wait for the logout request to complete
+          console.log(data);
           dispatch(logOut()); // Clear the token from Redux state
-          dispatch(apiSlice.util.resetApiState()); // Reset the API cache/state
+          setTimeout(() => {
+            dispatch(apiSlice.util.resetApiState());
+          }, 1000);
         } catch (err) {
           console.log(err);
         }
@@ -36,6 +37,16 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: "/auth/refresh",
         method: "GET",
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          console.log(data);
+          const { accessToken } = data;
+          dispatch(setCredentials({ accessToken }));
+        } catch (err) {
+          console.log(err);
+        }
+      },
     }),
   }),
 });
