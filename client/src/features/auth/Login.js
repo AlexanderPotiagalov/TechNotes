@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
+import usePersist from "../../hooks/usePersist";
 
 const Login = () => {
   const userRef = useRef(); // reference to the username input (used for focus)
@@ -11,10 +11,9 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
-
+  const [persist, setPersist] = usePersist();
   const navigate = useNavigate(); // for programmatic navigation
   const dispatch = useDispatch(); // to send Redux actions
-
   const [login, { isLoading }] = useLoginMutation(); // RTK Query login hook
 
   useEffect(() => {
@@ -53,6 +52,7 @@ const Login = () => {
   // Input handlers
   const handleUserInput = (e) => setUsername(e.target.value);
   const handlePwdInput = (e) => setPassword(e.target.value);
+  const handleToggle = () => setPersist((prev) => !prev);
 
   // Conditional class for error visibility
   const errClass = errMsg ? "errmsg" : "offscreen";
@@ -94,6 +94,16 @@ const Login = () => {
             required
           />
           <button className="form__submit-button">Sign In</button>
+          <label htmlFor="persist" className="form__persist">
+            <input
+              type="checkbox"
+              className="form__checkbox"
+              id="persist"
+              onChange={handleToggle}
+              checked={persist}
+            />
+            Trust This Device
+          </label>
         </form>
       </main>
       <footer>
