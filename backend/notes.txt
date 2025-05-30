@@ -12,3 +12,9 @@ Middleware: Functions placed in the path of HTTP requests that are received by b
                 #2: Custom
                 #3: 3rd Party 
 
+- API Slice in Redux Toolkit is designed to simplify data flow, optimize caching, and streamline API requests. It automatically fetches and stores data efficiently, reducing unnecessary network calls and improving app performance.
+
+JWT Authentication Controller - Handles user login, token refresh, and logout functionality
+    - Access token is used for protected routes. (Access token issued after authentication, client uses for API access until expires, verified with middleware, new token is issued at Refresh request.)
+    - Refresh token is used to obtain a new access token when it expires. (Refresh token issued after authentication, verified with endpoint, used to request new access token, and must be allowed to expire or logout.)
+
