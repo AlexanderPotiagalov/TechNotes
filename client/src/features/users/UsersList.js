@@ -9,7 +9,11 @@ const UsersList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery();
+  } = useGetUsersQuery(undefined, {
+    pollingInterval: 60000, // Polling every 60 seconds
+    refetchOnFocus: true, // Refetch when the component gains focus
+    refetchOnMountOrArgChange: true, // Refetch when the component mounts or arguments change
+  });
 
   // Conditional rendering based on the query state
   // isLoading: true when the request is in progress
