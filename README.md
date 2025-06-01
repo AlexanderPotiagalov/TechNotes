@@ -5,7 +5,7 @@
     </h1>
     <img
       src="https://raw.githubusercontent.com/AlexanderPotiagalov/TechNotes/main/readmephotos/TechNotes.png"
-      width="50%"
+      width="30%"
       align="left"
       style="margin-right:15px; margin-top:60px;"
       alt="TechNotes Dashboard Preview"
@@ -19,6 +19,7 @@
     </p>
     <p style="margin:4px 0; white-space: nowrap;">
       Built with:&nbsp;
+      <br>
       <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB"/>
       <img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" alt="Express.js"/>
       <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React"/>
