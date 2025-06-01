@@ -30,7 +30,10 @@ const createNewNote = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "All fields are required" }); // Return an error if any field is missing
   }
 
-  const duplicate = await Note.findOne({ title }).lean().exec(); // Check for duplicate titles
+  const duplicate = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 }) // Checks case insensitivity (Prevents duplicate usernames)
+    .lean()
+    .exec();
   if (duplicate) {
     return res.status(409).json({ message: "Note title already exists" }); // Return an error if the title already exists
   }
@@ -64,7 +67,10 @@ const updateNote = asyncHandler(async (req, res) => {
   }
 
   // Check for duplicate titles
-  const duplicate = await Note.findOne({ title }).lean().exec();
+  const duplicate = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 }) // Checks case insensitivity (Prevents duplicate usernames)
+    .lean()
+    .exec();
   if (duplicate && duplicate?._id.toString() !== id) {
     return res.status(409).json({ message: "Note title already exists" }); // Return an error if the title already exists
   }

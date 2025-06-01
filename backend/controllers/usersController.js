@@ -21,18 +21,24 @@ const createNewUser = asyncHandler(async (req, res) => {
   const { username, password, roles } = req.body; // Destructure the request body to get username, password, and roles
 
   // Confirm that all required fields are provided
-  if (!username || !password || !Array.isArray(roles) || !roles.length) {
+  if (!username || !password) {
     return res.status(400).json({ message: "All fields are required" }); // Return an error if any field is missing
   }
 
   // Check for duplicate usernames
-  const duplicate = await User.findOne({ username }).lean().exec(); // Check for duplicate usernames
+  const duplicate = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 }) // Checks case insensitivity (Prevents duplicate usernames)
+    .lean()
+    .exec();
   if (duplicate) {
     return res.status(409).json({ message: "Username already exists" }); // Return an error if the username already exists
   }
 
   const hashedPwd = await bcrypt.hash(password, 10); // Hash the password with bcrypt
-  const userObject = { username, password: hashedPwd, roles }; // Create a new user object
+  const userObject =
+    !Array.isArray(roles) || !roles.length
+      ? { username, password: hashedPwd }
+      : { username, password: hashedPwd, roles }; // Create a new user object
   const user = await User.create(userObject); // Create a new user in the database
 
   if (user) {
@@ -65,7 +71,10 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 
   // Check for duplicate usernames
-  const duplicate = await User.findOne({ username }).lean().exec();
+  const duplicate = await User.findOne({ username })
+    .collation({ locale: "en", strength: 2 }) // Checks case insensitivity (Prevents duplicate usernames)
+    .lean()
+    .exec();
   // Allow updates to the same user
   if (duplicate && duplicate?._id.toString() !== id) {
     return res.status(409).json({ message: "Username already exists" }); // Return an error if the username already exists
