@@ -5,7 +5,7 @@
     </h1>
     <img
       src="https://raw.githubusercontent.com/AlexanderPotiagalov/TechNotes/main/readmephotos/TechNotes.png"
-      width="50%"
+      width="30%"
       align="left"
       style="margin-right:15px; margin-top:60px;"
       alt="TechNotes Dashboard Preview"
@@ -18,14 +18,21 @@
       <img src="https://img.shields.io/github/stars/AlexanderPotiagalov/TechNotes?style=for-the-badge&color=ff6b6b&labelColor=1e293b" alt="GitHub Stars"/>
     </p>
     <p style="margin:4px 0; white-space: nowrap;">
-      Built with:&nbsp;
-      <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB"/>
-      <img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" alt="Express.js"/>
-      <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React"/>
-      <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js"/>
-      <img src="https://img.shields.io/badge/Redux_Toolkit-764ABC?style=flat-square&logo=redux&logoColor=white" alt="Redux Toolkit"/>
-      <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
-    </p>
+  Built with:&nbsp;
+  <br>
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB"/>
+  <img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" alt="Express.js"/>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js"/>
+  <img src="https://img.shields.io/badge/Redux_Toolkit-764ABC?style=flat-square&logo=redux&logoColor=white" alt="Redux Toolkit"/>
+  <img src="https://img.shields.io/badge/RTK_Query-764ABC?style=flat-square&logo=redux&logoColor=white" alt="RTK Query"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
+  <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white" alt="JWT"/>
+  <img src="https://img.shields.io/badge/REST_API-005571?style=flat-square&logo=api&logoColor=white" alt="REST API"/>
+  <img src="https://img.shields.io/badge/bcrypt-003B57?style=flat-square&logo=nodedotjs&logoColor=white" alt="bcrypt"/>
+  <img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white" alt="Postman"/>
+</p>
+
   </div>
 </div>
 
@@ -445,10 +452,9 @@ Great software is built by passionate communities. Join us in making TechNotes e
 
 ### 💬 **Get Involved**
 
-[![Discussions](https://img.shields.io/badge/GitHub-Discussions-6366f1?style=for-the-badge&logo=github)](https://github.com/yourusername/TechNotes/discussions)
-[![Issues](https://img.shields.io/badge/Report-Issues-ef4444?style=for-the-badge&logo=github)](https://github.com/yourusername/TechNotes/issues)
-[![Pull Requests](https://img.shields.io/badge/Submit-PR-10b981?style=for-the-badge&logo=github)](https://github.com/yourusername/TechNotes/pulls)
-[![Discord](https://img.shields.io/badge/Join-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/TechNotes)
+[![Discussions](https://img.shields.io/badge/GitHub-Discussions-6366f1?style=for-the-badge&logo=github)](https://github.com/AlexanderPotiagalov/TechNotes/discussions)
+[![Issues](https://img.shields.io/badge/Report-Issues-ef4444?style=for-the-badge&logo=github)](https://github.com/AlexanderPotiagalov/TechNotes/issues)
+[![Pull Requests](https://img.shields.io/badge/Submit-PR-10b981?style=for-the-badge&logo=github)](https://github.com/AlexanderPotiagalov/TechNotes/pulls)
 
 </div>
 
@@ -498,7 +504,7 @@ Built with modern web technologies and a commitment to security and user experie
 
 ---
 
-### 👨‍💻 **Created with ❤️ by [Your Name](https://github.com/AlexanderPotiagalov)**
+### 👨‍💻 **Created with ❤️ by [Alexander Potiagalov](https://github.com/AlexanderPotiagalov)**
 
 _Securing teams, one note at a time._
 
