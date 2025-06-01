@@ -446,10 +446,9 @@ Great software is built by passionate communities. Join us in making TechNotes e
 
 ### 💬 **Get Involved**
 
-[![Discussions](https://img.shields.io/badge/GitHub-Discussions-6366f1?style=for-the-badge&logo=github)](https://github.com/yourusername/TechNotes/discussions)
-[![Issues](https://img.shields.io/badge/Report-Issues-ef4444?style=for-the-badge&logo=github)](https://github.com/yourusername/TechNotes/issues)
-[![Pull Requests](https://img.shields.io/badge/Submit-PR-10b981?style=for-the-badge&logo=github)](https://github.com/yourusername/TechNotes/pulls)
-[![Discord](https://img.shields.io/badge/Join-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/TechNotes)
+[![Discussions](https://img.shields.io/badge/GitHub-Discussions-6366f1?style=for-the-badge&logo=github)](https://github.com/AlexanderPotiagalov/TechNotes/discussions)
+[![Issues](https://img.shields.io/badge/Report-Issues-ef4444?style=for-the-badge&logo=github)](https://github.com/AlexanderPotiagalov/TechNotes/issues)
+[![Pull Requests](https://img.shields.io/badge/Submit-PR-10b981?style=for-the-badge&logo=github)](https://github.com/AlexanderPotiagalov/TechNotes/pulls)
 
 </div>
 
@@ -499,7 +498,7 @@ Built with modern web technologies and a commitment to security and user experie
 
 ---
 
-### 👨‍💻 **Created with ❤️ by [Your Name](https://github.com/AlexanderPotiagalov)**
+### 👨‍💻 **Created with ❤️ by [Alexander Potiagalov](https://github.com/AlexanderPotiagalov)**
 
 _Securing teams, one note at a time._
 
