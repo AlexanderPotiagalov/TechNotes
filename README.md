@@ -4,7 +4,7 @@
       TechNotes
     </h1>
     <img
-      src="https://raw.githubusercontent.com/AlexanderPotiagalov/TechNotes/main/public/dashboard-preview.png"
+      src="https://raw.githubusercontent.com/AlexanderPotiagalov/TechNotes/main/readmephotos/TechNotes.png"
       width="50%"
       align="left"
       style="margin-right:15px; margin-top:60px;"
@@ -70,10 +70,10 @@
 ## 📸 UI Screenshots
 
 <div align="center">
-  <img src="public/login-screen.png" width="40%" style="border-radius: 30px; margin-right: 10px;"/>
-  <img src="public/dashboard.png" width="40%" style="border-radius: 30px; margin-right: 10px;"/>
-  <img src="public/notes-management.png" width="40%" style="border-radius: 30px;"/>
-  <img src="public/admin-panel.png" width="40%" style="border-radius: 30px;"/>
+  <img src="readmephotos/login.png" width="40%" style="border-radius: 30px; margin-right: 10px;"/>
+  <img src="readmephotos/jwtauth.png" width="40%" style="border-radius: 30px; margin-right: 10px;"/>
+  <img src="readmephotos/newuser.png" width="40%" style="border-radius: 30px;"/>
+  <img src="readmephotos/userlist.png" width="40%" style="border-radius: 30px;"/>
 </div>
 
 <div align="center">
@@ -145,14 +145,14 @@
 
 <div align="center">
 
-|                                                     Technology                                                      |     Purpose      |                    Why We Chose It                    |
-| :-----------------------------------------------------------------------------------------------------------------: | :--------------: | :---------------------------------------------------: |
-|      ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)       |   **Database**   |    Flexible schema & horizontal scaling capabilities    |
-|    ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)    | **Backend API**  |     Minimal overhead & extensive middleware ecosystem     |
-|         ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)          | **Frontend UI**  |  Component-based architecture & excellent ecosystem   |
-|       ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)       | **Runtime**      | JavaScript everywhere & exceptional NPM ecosystem |
-| ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white) | **State Mgmt**   |   Predictable state updates & powerful dev tools   |
-| ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white) |   **Styling**    |      Utility-first approach & rapid prototyping      |
+|                                                     Technology                                                      |     Purpose     |                  Why We Chose It                   |
+| :-----------------------------------------------------------------------------------------------------------------: | :-------------: | :------------------------------------------------: |
+|      ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)       |  **Database**   | Flexible schema & horizontal scaling capabilities  |
+|   ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)    | **Backend API** | Minimal overhead & extensive middleware ecosystem  |
+|         ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)          | **Frontend UI** | Component-based architecture & excellent ecosystem |
+|      ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)       |   **Runtime**   | JavaScript everywhere & exceptional NPM ecosystem  |
+| ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white)  | **State Mgmt**  |   Predictable state updates & powerful dev tools   |
+| ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white) |   **Styling**   |     Utility-first approach & rapid prototyping     |
 
 </div>
 
@@ -303,18 +303,18 @@ sequenceDiagram
     participant C as Client
     participant S as Server
     participant DB as Database
-    
+
     C->>S: POST /auth (credentials)
     S->>DB: Validate user credentials
     DB-->>S: User data
     S->>S: Generate JWT tokens
     S->>C: Access token + HttpOnly refresh cookie
-    
+
     Note over C,S: Normal API requests
     C->>S: API request + Bearer token
     S->>S: Verify access token
     S-->>C: API response
-    
+
     Note over C,S: Token refresh flow
     C->>S: API request (expired token)
     S-->>C: 401 Unauthorized
@@ -322,7 +322,7 @@ sequenceDiagram
     S->>S: Verify refresh token
     S-->>C: New access token
     C->>S: Retry API request
-    
+
     Note over C,S: Logout
     C->>S: POST /auth/logout
     S->>S: Clear refresh token
@@ -347,11 +347,11 @@ sequenceDiagram
 ```javascript
 // Login user
 const loginUser = async (credentials) => {
-  const response = await fetch('/auth', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  const response = await fetch("/auth", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(credentials),
-    credentials: 'include' // Include cookies
+    credentials: "include", // Include cookies
   });
   return response.json();
 };
@@ -361,8 +361,8 @@ const authSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     refresh: builder.mutation({
       query: () => ({
-        url: '/auth/refresh',
-        method: 'GET',
+        url: "/auth/refresh",
+        method: "GET",
       }),
     }),
   }),
@@ -384,13 +384,13 @@ const handleCreateNote = async (noteData) => {
     }).unwrap();
     // Optimistic update already handled by RTK Query
   } catch (error) {
-    console.error('Failed to create note:', error);
+    console.error("Failed to create note:", error);
   }
 };
 
 // Real-time note filtering
 const { data: notes, isLoading } = useGetNotesQuery();
-const filteredNotes = notes?.filter(note => 
+const filteredNotes = notes?.filter((note) =>
   note.title.toLowerCase().includes(searchTerm.toLowerCase())
 );
 ```
@@ -401,11 +401,11 @@ const filteredNotes = notes?.filter(note =>
 // Role-based component rendering
 const UserManagement = () => {
   const { isManager, isAdmin } = useAuth();
-  
+
   if (!isManager && !isAdmin) {
     return <Navigate to="/dash" replace />;
   }
-  
+
   return (
     <div className="user-management">
       {isAdmin && <AdminControls />}
@@ -418,7 +418,7 @@ const UserManagement = () => {
 const [updateUsers] = useUpdateUsersMutation();
 
 const handleBulkRoleUpdate = async (userIds, newRole) => {
-  const updates = userIds.map(id => ({ id, roles: [newRole] }));
+  const updates = userIds.map((id) => ({ id, roles: [newRole] }));
   await updateUsers({ updates }).unwrap();
 };
 ```
