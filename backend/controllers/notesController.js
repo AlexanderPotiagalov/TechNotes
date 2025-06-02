@@ -62,33 +62,41 @@ const createNewNote = asyncHandler(async (req, res) => {
 // @route PATCH /notes
 // @access Private
 const updateNote = asyncHandler(async (req, res) => {
-  const { id, user, title, text, completed } = req.body; // Destructure the request body to get note details
-  // Confirm that all required fields are provided
+  const { id, user, title, text, completed } = req.body;
+
   if (!id || !user || !title || !text || typeof completed !== "boolean") {
-    return res.status(400).json({ message: "All fields are required" }); // Return an error if any field is missing
+    return res.status(400).json({ message: "All fields are required" });
   }
 
-  const note = await Note.findById(id).exec(); // Find the note by ID
+  const note = await Note.findById(id).exec();
   if (!note) {
-    return res.status(400).json({ message: "Note not found" }); // Return an error if the note does not exist
+    return res.status(400).json({ message: "Note not found" });
   }
 
-  // Check for duplicate titles
-  const duplicate = await User.findOne({ username })
-    .collation({ locale: "en", strength: 2 }) // Checks case insensitivity (Prevents duplicate usernames)
+  const duplicate = await Note.findOne({ title })
+    .collation({ locale: "en", strength: 2 })
     .lean()
     .exec();
-  if (duplicate && duplicate?._id.toString() !== id) {
-    return res.status(409).json({ message: "Note title already exists" }); // Return an error if the title already exists
+
+  if (duplicate && duplicate._id.toString() !== id) {
+    return res.status(409).json({ message: "Note title already exists" });
   }
 
-  note.user = user; // Update the user associated with the note
-  note.title = title; // Update the title of the note
-  note.text = text; // Update the text of the note
-  note.completed = completed; // Update the completion status of the note
+  note.user = user;
+  note.title = title;
+  note.text = text;
+  note.completed = completed;
 
-  const updatedNote = await note.save(); // Save the updated note to the database
-  res.json({ message: `${updatedNote.title} updated` }); // Return success message with updated title
+  const updatedNote = await note.save();
+
+  const populatedNote = await Note.findById(updatedNote._id)
+    .populate("user", "username")
+    .lean();
+
+  res.json({
+    ...populatedNote,
+    username: populatedNote.user.username,
+  });
 });
 
 // @desc Delete all notes
