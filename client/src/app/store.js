@@ -10,7 +10,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware), // Add the API slice middleware
-  devTools: true,
+  devTools: false,
 });
 
 setupListeners(store.dispatch); // Set up listeners for the store to handle query lifecycle events
