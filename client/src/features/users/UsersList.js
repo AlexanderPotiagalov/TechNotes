@@ -1,7 +1,10 @@
 import { useGetUsersQuery } from "./UsersApiSlice";
 import User from "./User";
+import useTitle from "../../hooks/useTitle";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const UsersList = () => {
+  useTitle("techNotes: Users List");
   // Fetching users list
   const {
     data: users,
@@ -20,7 +23,7 @@ const UsersList = () => {
   // isSuccess: true when the request is successful and data is available
   // isError: true when the request fails
   let content;
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading) content = <PulseLoader color={"#FFF"} />;
   if (isError)
     content = (
       <p className={isError ? "errmsg" : "offscreen"}>{error?.data?.message}</p>

@@ -4,8 +4,11 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
+import useTitle from "../../hooks/useTitle";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Login = () => {
+  useTitle("Employee Login");
   const userRef = useRef(); // reference to the username input (used for focus)
   const errRef = useRef(); // reference to the error message area
   const [username, setUsername] = useState("");
@@ -58,7 +61,7 @@ const Login = () => {
   const errClass = errMsg ? "errmsg" : "offscreen";
 
   // Show loading screen if request is in progress
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <PulseLoader color={"#FFF"} />;
 
   // Login JSX content
   const content = (

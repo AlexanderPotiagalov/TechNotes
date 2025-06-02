@@ -1,8 +1,11 @@
 import { useGetNotesQuery } from "./notesApiSlice";
 import Note from "./Note";
 import useAuth from "../../hooks/useAuth";
+import useTitle from "../../hooks/useTitle";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const NotesList = () => {
+  useTitle("techNotes: Notes List");
   const { username, isManager, isAdmin } = useAuth();
   // Fetching notes list
   const {
@@ -22,7 +25,7 @@ const NotesList = () => {
   // isSuccess: true when the request is successful and data is available
   // isError: true when the request fails
   let content;
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading) content = <PulseLoader color={"#FFF"} />;
   if (isError)
     content = (
       <p className={isError ? "errmsg" : "offscreen"}>{error?.data?.message}</p>
