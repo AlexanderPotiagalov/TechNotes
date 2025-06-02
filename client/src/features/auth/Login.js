@@ -48,7 +48,7 @@ const Login = () => {
       } else {
         setErrMsg(err.data?.message);
       }
-      errRef.current.focus(); // Focus the error message for screen readers
+      errRef.current?.focus(); // Focus the error message for screen readers
     }
   };
 
