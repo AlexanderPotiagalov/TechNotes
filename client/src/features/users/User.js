@@ -1,12 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectUserById } from "./UsersApiSlice";
+import { useGetUsersQuery } from "./UsersApiSlice";
+import { memo } from "react";
 
 // User component to display user information in a table row
 const User = ({ userId }) => {
-  const user = useSelector((state) => selectUserById(state, userId));
+  const { user } = useGetUsersQuery("usersList", {
+    selectFromResult: ({ data }) => ({
+      user: data?.entities[userId],
+    }),
+  });
   const navigate = useNavigate();
 
   // If user is found, render the user information in a table row
@@ -31,4 +35,6 @@ const User = ({ userId }) => {
     );
   } else return null;
 };
-export default User;
+
+const memoizedUser = memo(User);
+export default memoizedUser;

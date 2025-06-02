@@ -8,11 +8,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
   // Inject endpoints into the API slice
   endpoints: (builder) => ({
     getUsers: builder.query({
-      // Define a query to get users
-      query: () => "/users", // Set the endpoint to fetch users
-      validateStatus: (response, result) => {
-        return response.status === 200 && !result.isError; // Validate the response status
-      },
+      // Define a query to get users & validate status
+      query: () => ({
+        url: "/users",
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
           user.id = user._id; // Map the _id field to id for consistency
