@@ -24,31 +24,38 @@ const getAllNotes = asyncHandler(async (req, res) => {
 // @route POST /notes
 // @access Private
 const createNewNote = asyncHandler(async (req, res) => {
-  const { user, title, text } = req.body; // Destructure the request body to get user, title, and text
-  // Confirm that all required fields are provided
+  const { user, title, text } = req.body;
+
   if (!user || !title || !text) {
-    return res.status(400).json({ message: "All fields are required" }); // Return an error if any field is missing
+    return res.status(400).json({ message: "All fields are required" });
   }
 
-  const duplicate = await User.findOne({ username })
-    .collation({ locale: "en", strength: 2 }) // Checks case insensitivity (Prevents duplicate usernames)
+  // Check for duplicate note title
+  const duplicate = await Note.findOne({ title })
+    .collation({ locale: "en", strength: 2 })
     .lean()
     .exec();
+
   if (duplicate) {
-    return res.status(409).json({ message: "Note title already exists" }); // Return an error if the title already exists
+    return res.status(409).json({ message: "Note title already exists" });
   }
 
-  const note = await Note.create({
-    user,
-    title,
-    text,
-  }); // Create a new note in the database
+  // Create note
+  const note = await Note.create({ user, title, text });
 
-  if (note) {
-    res.status(201).json({ message: `New note ${title} created` }); // Return success message if note is created
-  } else {
-    res.status(400).json({ message: "Invalid note data received" }); // Return an error if note creation fails
+  if (!note) {
+    return res.status(400).json({ message: "Invalid note data received" });
   }
+
+  // Populate and return the full note with username
+  const populatedNote = await Note.findById(note._id)
+    .populate("user", "username")
+    .lean();
+
+  res.status(201).json({
+    ...populatedNote,
+    username: populatedNote.user.username,
+  });
 });
 
 // @desc Update all notes
