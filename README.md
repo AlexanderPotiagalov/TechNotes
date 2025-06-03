@@ -39,6 +39,7 @@
 <br clear="left"/>
 
 ---
+
 ## 🚀 Live Demo
 
 Want to see TechNotes in action? Click the button below to launch the app:
@@ -68,7 +69,7 @@ Want to see TechNotes in action? Click the button below to launch the app:
 
 For full access to all features, feel free to start a discussion or reach out on LinkedIn.  
 If you'd just like to explore some functionality without full permissions, use:  
-**Username:** `Bro` &nbsp; | &nbsp; **Password:** `Code` 
+**Username:** `Bro` &nbsp; | &nbsp; **Password:** `Code`
 (Full permissions are granted only upon request.)
 
 ---
@@ -112,7 +113,7 @@ If you'd just like to explore some functionality without full permissions, use:
 <div align="center">
   <img src="readmephotos/login.png" width="40%" style="border-radius: 30px; margin-right: 10px;"/>
   <img src="readmephotos/jwtauth.png" width="40%" style="border-radius: 30px; margin-right: 10px;"/>
-  <img src="readmephotos/newuser.png" width="40%" style="border-radius: 30px;"/>
+  <img src="readmephotos/editnote.png" width="40%" style="border-radius: 30px;"/>
   <img src="readmephotos/userlist.png" width="40%" style="border-radius: 30px;"/>
 </div>
 
