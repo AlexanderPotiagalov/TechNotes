@@ -39,6 +39,39 @@
 <br clear="left"/>
 
 ---
+## 🚀 Live Demo
+
+Want to see TechNotes in action? Click the button below to launch the app:
+
+<p>
+  <a
+    href="https://technoteshub-dis4.onrender.com"
+    target="_blank"
+    style="
+      display: inline-block;
+      background-color: #6366f1;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s ease-in-out;
+    "
+    onmouseover="this.style.backgroundColor='#4f46e5';"
+    onmouseout="this.style.backgroundColor='#6366f1';"
+  >
+    🚀 Launch TechNotes
+  </a>
+</p>
+
+For full access to all features, feel free to start a discussion or reach out on LinkedIn.  
+If you'd just like to explore some functionality without full permissions, use:  
+**Username:** `Bro` &nbsp; | &nbsp; **Password:** `Code` 
+(Full permissions are granted only upon request.)
+
+---
 
 <details><summary>📜 Table of Contents</summary>
 
