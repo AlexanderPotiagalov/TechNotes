@@ -14,10 +14,10 @@ const Welcome = () => {
       <p>{today}</p>
       <h1>Welcome {username}!</h1>
       <p>
-        <Link to="/dash/notes">View techNotes</Link>
+        <Link to="/dash/notes">View TechNotes</Link>
       </p>
       <p>
-        <Link to="/dash/notes/new">Add New techNote</Link>
+        <Link to="/dash/notes/new">Add New TechNote</Link>
       </p>
       {(isManager || isAdmin) && (
         <p>
