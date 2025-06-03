@@ -4,7 +4,7 @@ import { setCredentials } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   // Set the base URL for API requests
-  baseUrl: "https://technoteshub-dis4.onrender.com",
+  baseUrl: "https://technotes-api-u0to.onrender.com",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
