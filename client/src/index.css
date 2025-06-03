@@ -944,3 +944,57 @@ tr {
   outline: 2px solid var(--PRIMARY);
   outline-offset: 2px;
 }
+
+/* ==========================================================================
+   Fix for select/input contrast (dark mode)
+   ========================================================================== */
+
+/* Make sure all native <select> elements use the dark “surface” background + light text */
+select {
+  background: var(--SURFACE-elevated, rgba(30, 41, 59, 0.95));
+  color: var(--COLOR, #f8fafc);
+  border: 1px solid var(--BORDER-DEFAULT, rgba(148, 163, 184, 0.2));
+  border-radius: var(--RADIUS-MD, 12px);
+  padding: var(--SPACE-3, 0.75rem) var(--SPACE-4, 1rem);
+  font-family: inherit;
+  font-size: 1rem;
+  appearance: none; /* removes default arrow on some browsers */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CBD5E1' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--SPACE-3, 0.75rem) center;
+  background-size: 10px 6px;
+  cursor: pointer;
+  transition: background-color var(--TRANSITION-SMOOTH, 0.3s) ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--PRIMARY, #6366f1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+select:hover {
+  background: var(--SURFACE-HOVER, rgba(51, 65, 85, 0.9));
+}
+
+select option {
+  background-color: var(--SURFACE, rgba(15, 23, 42, 0.8));
+  color: var(--COLOR, #f8fafc);
+  padding: var(--SPACE-2, 0.5rem) var(--SPACE-3, 0.75rem);
+}
+
+select option:hover,
+select option:checked {
+  background-color: var(--SURFACE-HOVER, rgba(51, 65, 85, 0.9));
+  color: var(--COLOR, #f8fafc);
+}
+
+.form__select {
+  background: var(--SURFACE-elevated, rgba(30, 41, 59, 0.95));
+  color: var(--COLOR, #f8fafc);
+}
+
+.form__select option {
+  background: var(--SURFACE, rgba(15, 23, 42, 0.8));
+  color: var(--COLOR, #f8fafc);
+}
