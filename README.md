@@ -45,7 +45,7 @@ Want to see TechNotes in action? Click the button below to launch the app:
 
 <p>
   <a
-    href="https://technoteshub-dis4.onrender.com/dash"
+    href="https://technoteshub-dis4.onrender.com"
     target="_blank"
     style="
       display: inline-block;
