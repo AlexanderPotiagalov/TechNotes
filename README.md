@@ -283,12 +283,14 @@ TechNotes/
 ├── backend/
 │   ├── config/
 │   │   ├── dbConn.js           # MongoDB connection & error handling
+│   │   ├── allowedOrigins.js   # Defines which URL's are allowed for CORS
 │   │   └── corsOptions.js      # CORS configuration & whitelist
 │   ├── controllers/
 │   │   ├── authController.js   # Login, refresh, logout logic
 │   │   ├── usersController.js  # User CRUD operations
 │   │   └── notesController.js  # Notes CRUD operations
 │   ├── middleware/
+│   │   ├── errorHandler.js     # Log errors (name, message, url, etc...)
 │   │   ├── verifyJWT.js        # JWT token verification
 │   │   ├── loginLimiter.js     # Rate limiting for login attempts
 │   │   └── logger.js           # Request logging middleware
@@ -298,7 +300,11 @@ TechNotes/
 │   ├── routes/
 │   │   ├── authRoutes.js       # Authentication endpoints
 │   │   ├── userRoutes.js       # User management endpoints
+│   │     ├── root.js             # Serves index.html for index routes.
 │   │   └── noteRoutes.js       # Notes management endpoints
+│   ├── view/
+│   │   ├── 404.html            # Page not found html
+│   │   └── index.html          # Backend html
 │   └── server.js               # Express app setup & middleware
 ├── client/
 │   ├── src/
@@ -306,27 +312,45 @@ TechNotes/
 │   │   │   ├── store.js        # Redux store configuration
 │   │   │   └── api/
 │   │   │       └── apiSlice.js # RTK Query base API setup
+│   │   ├── config/
+│   │   │    ├── roles.js        # Defines Roles   
 │   │   ├── features/
 │   │   │   ├── auth/           # Authentication components & logic
 │   │   │   │   ├── Login.js
 │   │   │   │   ├── PersistLogin.js
-│   │   │   │   └── authApiSlice.js
+│   │   │   │   ├── authApiSlice.js
+│   │   │   │   ├── authSlice.js
+│   │   │   │   ├── RequireAuth.js
+│   │   │   │   ├── Prefetch.js
+│   │   │   │   └── Welcome.js
 │   │   │   ├── users/          # User management features
 │   │   │   │   ├── UsersList.js
+│   │   │   │   ├── EditUserForm.js
+│   │   │   │   ├── NewUserForm.js
+│   │   │   │   ├── User.js
 │   │   │   │   ├── EditUser.js
-│   │   │   │   └── usersApiSlice.js
+│   │   │   │   └── UsersApiSlice.js
 │   │   │   └── notes/          # Notes management features
 │   │   │       ├── NotesList.js
 │   │   │       ├── EditNote.js
+│   │   │       ├── EditNoteForm.js
+│   │   │       ├── NewNote.js
+│   │   │       ├── NewNoteForm.js
+│   │   │       ├── Note.js
 │   │   │       └── notesApiSlice.js
 │   │   ├── components/
 │   │   │   ├── Layout.js       # Main app layout
 │   │   │   ├── Public.js       # Landing page
-│   │   │   └── DashHeader.js   # Dashboard header
+│   │   │   ├── DashHeader.js   # Dashboard header
+│   │   │   ├── DashFooter.js   # Dashboard footer
+│   │   │   └── DashLayout.js   # Dashboard Layout
 │   │   ├── hooks/
 │   │   │   ├── useAuth.js      # Authentication hook
+│   │   │   ├── useTitle.js     # Title hook
 │   │   │   └── usePersist.js   # Persistence toggle hook
-│   │   └── App.js              # Main app component & routing
+│   │   ├── App.js              # Main app component & routing
+│   │   ├── index.js            
+│   │   ├── index.css
 │   └── public/
 │       ├── favicon.ico
 │       └── screenshots/        # UI screenshots for documentation
